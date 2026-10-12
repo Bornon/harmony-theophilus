@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmony</title>
+	<style>
+		*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+#site-header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+
+#navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 60px;
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+
+}
+
+#logo{
+
+    color:white;
+    font-size:40px;
+    font-weight:700;
+    letter-spacing:1px;
+}
+#nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:35px;
+}
+#nav-item-home, #nav-item-service, #nav-item-portfolio, #nav-item-about, #nav-item-linkup{
+}
+
+#nav-item-home a, #nav-item-service a, #nav-item-portfolio a, #nav-item-about a, #nav-item-linkup a{
+
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    transition:.3s;
+
+}
+
+#nav-item-home a:hover, #nav-item-service a:hover, #nav-item-portfolio a:hover, #nav-item-about a:hover, #nav-item-linkup a:hover{
+
+    color:#ff9f7b;
+
+}
+
+#hero{
+
+    width:100%;
+    height:100vh;
+	background:url(images/Untitled-1.jpg) center center/cover no-repeat;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+#overlay{
+
+    width:700px;
+	background:rgba(0,0,0,.55);
+    border-radius:15px;
+    padding:60px 40px;
+    text-align:center;
+
+}
+
+#overlay-title{
+
+    color:white;
+    font-size:58px;
+    margin-bottom:25px;
+    font-weight:700;
+}
+
+#overlay-subtitle{
+
+    color:white;
+    font-size:36px;
+    font-weight:300;
+    margin-bottom:45px;
+
+}
+
+#explore-btn{
+
+    border:none;
+    background:#d56f72;
+    color:white;
+    padding:18px 55px;
+    border-radius:12px;
+    font-size:28px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+
+}
+
+#explore-btn:hover{
+
+    background:#be595c;
+    transform:scale(1.05);
+}
+
+#site-footer{
+    background:#0d0d0d;
+    color:white;
+    width:100%;
+}
+
+#footer-top{
+    text-align:center;
+    padding:50px 40px 35px;
+}
+
+#footer-title{
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+#footer-tagline{
+    color:#bbb;
+    font-size:15px;
+    line-height:1.6;
+    max-width:500px;
+    margin:0 auto 30px;
+}
+
+#footer-socials{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+#footer-socials a{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:rgba(255,255,255,.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0d0d0d;
+    text-decoration:none;
+    font-size:18px;
+    transition:.3s;
+}
+
+#footer-socials a:hover{
+    background:#d56f72;
+    color:white;
+    transform:translateY(-3px);
+}
+
+#footer-socials a img{
+    width:20px;
+    height:20px;
+    object-fit:cover;
+}
+
+#footer-contact{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:35px 40px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+#contact-item-phone, #contact-item-email, #contact-item-location{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+#contact-icon-phone, #contact-icon-email, #contact-icon-location{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    background:rgba(255,255,255,.9);
+    color:#0d0d0d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+#contact-icon-phone img, #contact-icon-email img, #contact-icon-location img{
+    width:22px;
+    height:22px;
+    object-fit:cover;
+}
+
+#contact-item-phone h4, #contact-item-email h4, #contact-item-location h4{
+    font-size:14px;
+    color:#bbb;
+    font-weight:400;
+    margin-bottom:4px;
+}
+
+#contact-item-phone p, #contact-item-email p, #contact-item-location p{
+    font-size:16px;
+    font-weight:600;
+    color:white;
+}
+
+#contact-item-phone a, #contact-item-email a, #contact-item-location a{
+    color:white;
+    text-decoration:none;
+}
+
+#footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    padding:20px 40px;
+    border-top:1px solid rgba(255,255,255,.1);
+    color:#888;
+    font-size:14px;
+}
+
+#footer-bottom-links{
+    display:flex;
+    gap:25px;
+}
+
+#footer-bottom-links a{
+    color:#888;
+    text-decoration:none;
+    transition:.3s;
+}
+
+#footer-bottom-links a:hover{
+    color:#ff9f7b;
+}
+
+
+@media(max-width:900px){
+
+#navbar{
+
+padding:20px;
+flex-direction:column;
+gap:20px;
+
+}
+
+#logo{
+
+font-size:30px;
+
+}
+
+#nav-links{
+
+flex-wrap:wrap;
+justify-content:center;
+gap:15px;
+
+}
+
+#nav-item-home a, #nav-item-service a, #nav-item-portfolio a, #nav-item-about a, #nav-item-linkup a{
+
+font-size:18px;
+
+}
+
+#overlay{
+
+width:90%;
+padding:40px 20px;
+
+}
+
+#overlay-title{
+
+font-size:40px;
+
+}
+
+#overlay-subtitle{
+
+font-size:24px;
+
+}
+
+#explore-btn{
+
+font-size:20px;
+padding:15px 35px;
+
+}
+
+#footer-top{
+    padding:40px 20px 25px;
+}
+
+#footer-title{
+    font-size:26px;
+}
+
+#footer-contact{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:30px 20px;
+}
+
+#contact-item-phone, #contact-item-email, #contact-item-location{
+    flex-direction:column;
+    gap:10px;
+}
+
+#footer-bottom{
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+#menu-toggle{
+    display: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+@media (max-width:768px){
+
+    #navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        flex-direction: row;
+    }
+
+    #logo{
+        font-size: 22px;
+    }
+
+    #menu-toggle{
+        display: block !important;
+    }
+
+    #nav-links{
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        width: 100%;
+        background: rgba(0,0,0,.95);
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 20px 0;
+    }
+
+    #nav-links.active{
+        display: flex;
+    }
+
+    #nav-item-home, #nav-item-service, #nav-item-portfolio, #nav-item-about, #nav-item-linkup{
+        width: 100%;
+        text-align: center;
+    }
+
+    #nav-item-home a, #nav-item-service a, #nav-item-portfolio a, #nav-item-about a, #nav-item-linkup a{
+        display: block;
+        padding: 12px;
+        font-size: 18px;
+    }
+}
+}
+	</style>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="site-header">
+      <nav id="navbar">
+
+    <div id="logo">
+        HARMONY
+    </div>
+
+    <div id="menu-toggle">
+        ☰
+    </div>
+
+    <ul id="nav-links">
+        <li id="nav-item-home"><a href="index.html">Home</a></li>
+        <li id="nav-item-service"><a href="service.html">Service</a></li>
+        <li id="nav-item-portfolio"><a href="portfolio.html">Portfolio</a></li>
+        <li id="nav-item-about"><a href="about.html">About</a></li>
+        <li id="nav-item-linkup"><a href="linkup.html">LINK UP</a></li>
+    </ul>
+
+</nav>
+    </header>
+
+
+    <section id="hero">
+
+        <div id="overlay">
+
+            <h1 id="overlay-title">HI, I AM HARMONY</h1>
+
+            <h2 id="overlay-subtitle">Motion Designer | Photographer</h2>
+
+            <button id="explore-btn">Explore Services</button>
+
+        </div>
+
+    </section>
+
+    <footer id="site-footer">
+
+        <div id="footer-top">
+            <h2 id="footer-title">HARMONY</h2>
+            <p id="footer-tagline">Motion designer & photographer crafting visual stories that move people. Based in Accra, working worldwide.</p>
+
+            <div id="footer-socials">
+                <a href="#" aria-label="Instagram"><img src="images/IMG_3690.JPG" alt="Instagram"></a>
+                <a href="#" aria-label="Twitter"><img src="images/IMG_3691.JPG" alt="Twitter"></a>
+                <a href="#" aria-label="YouTube"><img src="images/IMG_3692.JPG" alt="YouTube"></a>
+                <a href="#" aria-label="LinkedIn"><img src="images/IMG_3693.JPG" alt="LinkedIn"></a>
+            </div>
+        </div>
+
+        <div id="footer-contact">
+
+            <div id="contact-item-phone">
+                <div id="contact-icon-phone"><img src="images/IMG_3501.JPG" alt="Phone"></div>
+                <div>
+                    <h4>Call Us</h4>
+                    <p><a href="tel:+233599672376">+233 599 672 376</a></p>
+                </div>
+            </div>
+
+            <div id="contact-item-email">
+                <div id="contact-icon-email"><img src="images/IMG_3695.JPG" alt="Email"></div>
+                <div>
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:theophilusharmony7@gmail.com">theophilusharmony7@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div id="contact-item-location">
+                <div id="contact-icon-location"><img src="images/IMG_3696.JPG" alt="Location"></div>
+                <div>
+                    <h4>Based In</h4>
+                    <p>Accra, Ghana</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer-bottom">
+            <span>Harmony &copy; 2026 &ndash; All Rights Reserved</span>
+            <div id="footer-bottom-links">
+                <a href="service.html">Service</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+
+    </footer>
+
+	<script>
+const menuToggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+const navItems = document.querySelectorAll("#nav-links li a");
+
+menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("active");
+
+    if (navLinks.classList.contains("active")) {
+        menuToggle.innerHTML = "✕";
+    } else {
+        menuToggle.innerHTML = "☰";
+    }
+});
+
+navItems.forEach(item => {
+    item.addEventListener("click", () => {
+        navLinks.classList.remove("active");
+        menuToggle.innerHTML = "☰";
+    });
+});
+</script>
+</body>
+</html>

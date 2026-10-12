@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Harmony</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    overflow-x:hidden;
+}
+
+
+#site-header{
+    position:fixed;
+    width:100%;
+    top:0;
+    left:0;
+    z-index:1000;
+}
+
+#navbar{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:12px 30px;
+
+    background:rgba(0,0,0,.35);
+    backdrop-filter:blur(8px);
+
+}
+
+#logo{
+
+    color:white;
+    font-size:24px;
+    font-weight:700;
+
+}
+
+#nav-links{
+
+    display:flex;
+    list-style:none;
+    gap:28px;
+
+}
+
+#nav-item-home, #nav-item-service, #nav-item-portfolio, #nav-item-about, #nav-item-linkup{
+
+}
+
+#nav-item-home a, #nav-item-service a, #nav-item-portfolio a, #nav-item-about a, #nav-item-linkup a{
+
+    color:white;
+    text-decoration:none;
+    font-size:16px;
+    transition:.3s;
+
+}
+
+#nav-item-home a:hover, #nav-item-service a:hover, #nav-item-portfolio a:hover, #nav-item-about a:hover, #nav-item-linkup a:hover{
+
+    color:#ff9f7b;
+
+}
+
+
+#menu-toggle{
+
+    display:none;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+
+}
+
+
+#contact{
+
+    width:100%;
+    height:100vh;
+
+    background:
+    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+    url(images/IMG_3504.JPG);
+
+    background-size:cover;
+    background-position:center;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+}
+
+#contact-content{
+
+    text-align:center;
+    color:white;
+    width:90%;
+    max-width:900px;
+
+}
+
+#contact-content h1{
+
+    font-size:60px;
+    margin-bottom:30px;
+    font-weight:600;
+
+}
+
+#contact-content p{
+
+    font-size:28px;
+    line-height:1.6;
+    margin-bottom:70px;
+
+}
+
+#contact-buttons{
+
+    display:flex;
+    justify-content:center;
+    gap:80px;
+    flex-wrap:wrap;
+
+}
+#contact-btn-call, #contact-btn-whatsapp{
+
+    display:flex;
+    align-items:center;
+    gap:18px;
+    text-decoration:none;
+    color:white;
+    font-size:40px;
+    font-weight:700;
+    transition:.3s;
+
+}
+
+#contact-btn-call:hover, #contact-btn-whatsapp:hover{
+    transform:scale(1.08);
+}
+
+#contact-btn-call img, #contact-btn-whatsapp img{
+
+    width:75px;
+    height:75px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    border-radius:8px;
+    padding:18px;
+    object-fit:contain;
+
+}
+
+#contact-btn-call img{
+
+    background:white;
+
+}
+
+#contact-btn-whatsapp img{
+
+    background:#25D366;
+
+}
+
+#site-footer{
+    background:#0d0d0d;
+    color:white;
+    width:100%;
+}
+
+#footer-top{
+    text-align:center;
+    padding:50px 40px 35px;
+}
+
+#footer-title{
+    font-size:32px;
+    font-weight:700;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+#footer-tagline{
+    color:#bbb;
+    font-size:15px;
+    line-height:1.6;
+    max-width:500px;
+    margin:0 auto 30px;
+}
+
+#footer-socials{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+#footer-socials a{
+    width:42px;
+    height:42px;
+    border-radius:10px;
+    background:rgba(255,255,255,.9);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#0d0d0d;
+    text-decoration:none;
+    font-size:18px;
+    transition:.3s;
+}
+
+#footer-socials a:hover{
+    background:#d56f72;
+    color:white;
+    transform:translateY(-3px);
+}
+
+#footer-socials a img{
+    width:20px;
+    height:20px;
+    object-fit:cover;
+}
+
+#footer-contact{
+    display:flex;
+    justify-content:space-around;
+    flex-wrap:wrap;
+    gap:30px;
+    padding:35px 40px;
+    border-top:1px solid rgba(255,255,255,.1);
+}
+
+#contact-item-phone, #contact-item-email, #contact-item-location{
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+#contact-icon-phone, #contact-icon-email, #contact-icon-location{
+    width:48px;
+    height:48px;
+    min-width:48px;
+    border-radius:50%;
+    background:rgba(255,255,255,.9);
+    color:#0d0d0d;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+#contact-icon-phone img, #contact-icon-email img, #contact-icon-location img{
+    width:22px;
+    height:22px;
+    object-fit:cover;
+}
+
+#contact-item-phone h4, #contact-item-email h4, #contact-item-location h4{
+    font-size:14px;
+    color:#bbb;
+    font-weight:400;
+    margin-bottom:4px;
+}
+
+#contact-item-phone p, #contact-item-email p, #contact-item-location p{
+    font-size:16px;
+    font-weight:600;
+    color:white;
+}
+
+#contact-item-phone a, #contact-item-email a, #contact-item-location a{
+    color:white;
+    text-decoration:none;
+}
+
+#footer-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:15px;
+    padding:20px 40px;
+    border-top:1px solid rgba(255,255,255,.1);
+    color:#888;
+    font-size:14px;
+}
+
+#footer-bottom-links{
+    display:flex;
+    gap:25px;
+}
+
+#footer-bottom-links a{
+    color:#888;
+    text-decoration:none;
+    transition:.3s;
+}
+
+#footer-bottom-links a:hover{
+    color:#ff9f7b;
+}
+
+
+@media(max-width:768px){
+
+#navbar{
+
+padding:12px 20px;
+
+}
+
+#logo{
+
+font-size:22px;
+
+}
+
+#menu-toggle{
+
+display:block;
+
+}
+
+#nav-links{
+
+display:none;
+position:absolute;
+top:60px;
+left:0;
+width:100%;
+background:rgba(0,0,0,.95);
+flex-direction:column;
+align-items:center;
+padding:20px 0;
+gap:20px;
+}
+
+#nav-links.active{
+
+display:flex;
+
+}
+
+#nav-item-home a, #nav-item-service a, #nav-item-portfolio a, #nav-item-about a, #nav-item-linkup a{
+
+font-size:18px;
+
+}
+
+#contact-content h1{
+
+font-size:40px;
+
+}
+
+#contact-content p{
+
+font-size:20px;
+
+}
+
+#contact-buttons{
+
+flex-direction:column;
+
+gap:40px;
+
+}
+
+#contact-btn-call, #contact-btn-whatsapp{
+
+font-size:28px;
+
+}
+
+#contact-btn-call img, #contact-btn-whatsapp img{
+
+width:60px;
+height:60px;
+
+}
+
+#footer-contact{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:30px 20px;
+}
+
+#contact-item-phone, #contact-item-email, #contact-item-location{
+    flex-direction:column;
+    gap:10px;
+}
+
+#footer-bottom{
+    flex-direction:column;
+    text-align:center;
+    padding:20px;
+}
+
+#footer-title{
+    font-size:26px;
+}
+
+#footer-top{
+    padding:40px 20px 25px;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header id="site-header">
+
+<nav id="navbar">
+
+<div id="logo">
+
+HARMONY
+
+</div>
+
+<div id="menu-toggle">
+
+☰
+
+</div>
+
+<ul id="nav-links">
+
+<li id="nav-item-home"><a href="index.html">Home</a></li>
+<li id="nav-item-service"><a href="service.html">Service</a></li>
+<li id="nav-item-portfolio"><a href="portfolio.html">Portfolio</a></li>
+<li id="nav-item-about"><a href="about.html">About</a></li>
+<li id="nav-item-linkup"><a href="linkup.html">LINK UP</a></li>
+
+</ul>
+
+</nav>
+
+</header>
+
+<section id="contact">
+
+<div id="contact-content">
+
+<h1>Let's Work Together</h1>
+
+<p>
+
+Need a design or photography expert?
+
+Reach out on WhatsApp or give me a call.
+
+</p>
+
+<div id="contact-buttons">
+
+<a href="tel:+233599673276" id="contact-btn-call">
+
+<img src="images/IMG_3697.JPG" alt="Call">
+
+<span>Call Me</span>
+
+</a>
+
+<a href="https://wa.me/233599673276" id="contact-btn-whatsapp">
+
+<img src="images/IMG_3698.JPG" alt="WhatsApp">
+
+<span>WhatsApp Me</span>
+
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+    <footer id="site-footer">
+
+        <div id="footer-top">
+            <h2 id="footer-title">HARMONY</h2>
+            <p id="footer-tagline">Motion designer & photographer crafting visual stories that move people. Based in Accra, working worldwide.</p>
+
+            <div id="footer-socials">
+                <a href="#" aria-label="Instagram"><img src="images/IMG_3690.JPG" alt="Instagram"></a>
+                <a href="#" aria-label="Twitter"><img src="images/IMG_3691.JPG" alt="Twitter"></a>
+                <a href="#" aria-label="YouTube"><img src="images/IMG_3692.JPG" alt="YouTube"></a>
+                <a href="#" aria-label="LinkedIn"><img src="images/IMG_3693.JPG" alt="LinkedIn"></a>
+            </div>
+        </div>
+
+        <div id="footer-contact">
+
+            <div id="contact-item-phone">
+                <div id="contact-icon-phone"><img src="images/IMG_3501.JPG" alt="Phone"></div>
+                <div>
+                    <h4>Call Us</h4>
+                    <p><a href="tel:+233599672376">+233 599 672 376</a></p>
+                </div>
+            </div>
+
+            <div id="contact-item-email">
+                <div id="contact-icon-email"><img src="images/IMG_3695.JPG" alt="Email"></div>
+                <div>
+                    <h4>Email Us</h4>
+                    <p><a href="mailto:theophilusharmony7@gmail.com">theophilusharmony7@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div id="contact-item-location">
+                <div id="contact-icon-location"><img src="images/IMG_3696.JPG" alt="Location"></div>
+                <div>
+                    <h4>Based In</h4>
+                    <p>Accra, Ghana</p>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer-bottom">
+            <span>Harmony &copy; 2026 &ndash; All Rights Reserved</span>
+            <div id="footer-bottom-links">
+                <a href="service.html">Service</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+
+    </footer>
+
+<script>
+
+const menuToggle=document.getElementById("menu-toggle");
+
+const navLinks=document.getElementById("nav-links");
+
+const navItems=document.querySelectorAll("#nav-links li a");
+
+menuToggle.addEventListener("click",()=>{
+
+navLinks.classList.toggle("active");
+
+menuToggle.innerHTML=navLinks.classList.contains("active")?"✕":"☰";
+
+});
+
+navItems.forEach(item=>{
+
+item.addEventListener("click",()=>{
+
+navLinks.classList.remove("active");
+
+menuToggle.innerHTML="☰";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
